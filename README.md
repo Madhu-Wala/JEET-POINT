@@ -34,7 +34,13 @@ JEET-Point is a full‑stack web application for running quizzes and contests. S
   - routes/ — API routes ([backend/routes/studentRoutes.js](backend/routes/studentRoutes.js), [backend/routes/teacherRoutes.js](backend/routes/teacherRoutes.js))
   - middleware/ — auth & upload hooks ([backend/middleware/firebaseAuth.js](backend/middleware/firebaseAuth.js), [backend/middleware/upload.js](backend/middleware/upload.js))
   - utils/ — helpers ([backend/utils/shuffle.js](backend/utils/shuffle.js))
-  - serviceAccountKey.json — Firebase service account ([backend/serviceAccountKey.json](backend/serviceAccountKey.json))
+  - serviceAccountKey.json — Firebase service account 
+    Get Firebase serviceAccountKey.json (concise steps)
+    - Open https://console.firebase.google.com and select your project.
+    - Click the gear icon → Project settings.
+    - Open the "Service accounts" tab.
+    - Click "Generate new private key" → Confirm. A JSON file will download.
+
 - frontend/jeet-point-app/
   - src/
   - public/
