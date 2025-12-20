@@ -68,7 +68,7 @@ Prerequisites:
    npm install
    ```
    - Create `.env` (example below).
-   - Place Firebase service account at `backend/serviceAccountKey.json`.
+   - Firebase service account is provided via environment variable (no JSON file committed).
 
 3. Frontend setup
    ```sh
