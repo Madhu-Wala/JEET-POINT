@@ -163,6 +163,7 @@ This project currently uses the project's EmailJS account. To use your own:
 6. Restart the frontend dev server (npm run dev).
 
 Example: modify Contact.jsx to use env vars (see next snippet).
+
 replace:
 ```
 let data={name, email, msg};
@@ -172,10 +173,10 @@ emailjs.send("service_tuycojb", "template_n8o15uq", data, "7pyJRXFQ8-18SA-Ip")
 with:
 ```
 // load your EmailJS creds (replace hard-coded values on line 14 in sequence: Service ID, Template ID, Public Key)
-+   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
-+   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
-+   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-+   emailjs.send(SERVICE_ID, TEMPLATE_ID, data, PUBLIC_KEY)
+   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+   emailjs.send(SERVICE_ID, TEMPLATE_ID, data, PUBLIC_KEY)
 ```
 
 ## Usage
