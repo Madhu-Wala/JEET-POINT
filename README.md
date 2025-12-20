@@ -100,12 +100,15 @@ MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/jeetpoint?retryWri
 CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
-FIREBASE_SERVICE_ACCOUNT_PATH=./serviceAccountKey.json
+FIREBASE_SERVICE_ACCOUNT=you_serviceAccountKey
 ```
 
-Notes:
-- Put the Firebase service account JSON at backend/serviceAccountKey.json or update FIREBASE_SERVICE_ACCOUNT_PATH.
-- Keep secrets out of source control.
+### Obtain Firebase Service Account Credentials (Single-Method)
+
+1. Go to **Firebase Console → Project Settings → Service Accounts**, then click **Generate new private key** and download the JSON file.
+
+2. Copy the service account JSON and add it as a **single-line value** in `backend/.env`.  
+   Make sure to **remove all spaces and line breaks** before saving.
 
 ## Usage
 
