@@ -103,6 +103,22 @@ CLOUDINARY_API_SECRET=your_api_secret
 FIREBASE_SERVICE_ACCOUNT=you_serviceAccountKey
 ```
 
+## Firebase Authentication
+
+This project currently uses the **original Firebase project** for authentication and Firestore.  
+If you clone the repo, it will work immediately using the existing setup.
+
+### Using your own Firebase project
+
+If you want to attach your own Firebase project:
+
+1. Create a Firebase project at [Firebase Console](https://console.firebase.google.com/).
+2. Enable **Authentication** (Email/Google Sign-In, etc.).
+3. Create a Firestore database.
+4. Copy your **Web App config** (from Project Settings → General → Your apps → Firebase SDK snippet).
+5. Replace the config in `frontend/jeet-point-app/src/components/Firebase.jsx`
+6. Restart the frontend dev server (npm run dev) and your Firebase project will now be used.
+
 ### Obtain Firebase Service Account Credentials (Single-Method)
 
 1. Go to **Firebase Console → Project Settings → Service Accounts**, then click **Generate new private key** and download the JSON file.
