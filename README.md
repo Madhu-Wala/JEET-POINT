@@ -1,5 +1,7 @@
 # JEET-Point — Quiz & Contest Platform
 
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://jeet-point.web.app/)
+
 JEET-Point is a full‑stack web application for running quizzes and contests. Students can take adaptive quizzes; teachers can create/manage contests and questions; admins can manage users and system settings. The frontend is built with React + Vite and the backend is Node.js + Express with MongoDB and Firebase-based auth.
 
 ## Key Features
