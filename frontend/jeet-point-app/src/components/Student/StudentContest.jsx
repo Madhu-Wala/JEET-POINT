@@ -29,7 +29,7 @@ export default function StudentContest() {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
   
-        const response=await axios.get("https://jeet-point-backend.onrender.com/student/attempted-contests",{
+        const response=await axios.get("http://localhost:3000/student/attempted-contests",{
           headers:{
             Authorization:`Bearer ${token}`,
           }

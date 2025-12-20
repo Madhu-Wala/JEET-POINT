@@ -111,7 +111,7 @@ export default function GenerateContest() {
       };
 
       const response = await axios.post(
-        "https://jeet-point-backend.onrender.com/teacher/create-contest",
+        "http://localhost:3000/teacher/create-contest",
         payload,
         {
           headers: {

@@ -15,7 +15,7 @@ export default function TeacherContest() {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
   
-        const response=await axios.get("https://jeet-point-backend.onrender.com/teacher/contests",{
+        const response=await axios.get("http://localhost:3000/teacher/contests",{
           headers:{
             Authorization:`Bearer ${token}`,
           }

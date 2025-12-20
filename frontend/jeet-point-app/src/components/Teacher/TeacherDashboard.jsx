@@ -46,13 +46,13 @@ export default function TeacherDashboard() {
         const token = await user.getIdToken();
 
         const [contestsResp, dashResp, contribResp] = await Promise.all([
-          axios.get("https://jeet-point-backend.onrender.com/teacher/contests", {
+          axios.get("http://localhost:3000/teacher/contests", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://jeet-point-backend.onrender.com/teacher/dashContest", {
+          axios.get("http://localhost:3000/teacher/dashContest", {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("https://jeet-point-backend.onrender.com/teacher/contributed", {
+          axios.get("http://localhost:3000/teacher/contributed", {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

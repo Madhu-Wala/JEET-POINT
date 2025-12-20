@@ -18,7 +18,7 @@ export default function ViewResponse() {
         const user = getAuth().currentUser;
         const token = await user.getIdToken();
 
-        const res = await axios.get(`https://jeet-point-backend.onrender.com/teacher/view-responses/${code}`, {
+        const res = await axios.get(`http://localhost:3000/teacher/view-responses/${code}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

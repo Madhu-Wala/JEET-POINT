@@ -28,7 +28,7 @@ export default function StudentAnalytics() {
         const user = getAuth().currentUser;
         const token = await user.getIdToken();
         const response = await axios.get(
-          "https://jeet-point-backend.onrender.com/student/quizHistory",
+          "http://localhost:3000/student/quizHistory",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -49,7 +49,7 @@ export default function StudentAnalytics() {
         const token = await user.getIdToken();
 
         const response = await axios.get(
-          "https://jeet-point-backend.onrender.com/student/attempted-contests",
+          "http://localhost:3000/student/attempted-contests",
           {
             headers: {
               Authorization: `Bearer ${token}`,

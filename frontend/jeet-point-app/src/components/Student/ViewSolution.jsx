@@ -17,7 +17,7 @@ export default function ViewSolution() {
         const user=getAuth().currentUser;
       const token=await user.getIdToken();
 
-      const response=await axios.get(`https://jeet-point-backend.onrender.com/student/view-solution/${code}`,{
+      const response=await axios.get(`http://localhost:3000/student/view-solution/${code}`,{
         headers:{
           Authorization:`Bearer ${token}`
         }

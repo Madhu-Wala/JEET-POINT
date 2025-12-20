@@ -20,7 +20,7 @@ export default function ContestLeaderboard() {
 
         // Fetch submissions
         const response = await axios.get(
-          `https://jeet-point-backend.onrender.com/teacher/leaderboard/${code}`,
+          `http://localhost:3000/teacher/leaderboard/${code}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

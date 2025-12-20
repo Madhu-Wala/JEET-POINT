@@ -15,7 +15,7 @@ export default function ViewQuizSoln() {
         const user = getAuth().currentUser;
         const token = await user.getIdToken();
         const res = await axios.get(
-          `https://jeet-point-backend.onrender.com/student/view-quiz-solution/${_id}`,
+          `http://localhost:3000/student/view-quiz-solution/${_id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setQuiz(res.data);

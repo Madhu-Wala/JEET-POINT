@@ -43,7 +43,7 @@ export default function StudentQuiz() {
       try {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
-        const response=await axios.get("https://jeet-point-backend.onrender.com/student/quizHistory", {headers: {Authorization: `Bearer ${token}`}});
+        const response=await axios.get("http://localhost:3000/student/quizHistory", {headers: {Authorization: `Bearer ${token}`}});
         setHistory(response.data);
       } catch (err) {
         console.error("Error fetching quiz history:", err);

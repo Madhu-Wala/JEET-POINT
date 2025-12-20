@@ -80,7 +80,7 @@ function ContestAttempt() {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
         
-        const response=await axios.get(`https://jeet-point-backend.onrender.com/student/contest/${code}`,{
+        const response=await axios.get(`http://localhost:3000/student/contest/${code}`,{
         headers:{
           Authorization:`Bearer ${token}`
         },
@@ -129,7 +129,7 @@ function ContestAttempt() {
         score:sc,total:total,answers:answers
       }
 
-     const response= await axios.post(`https://jeet-point-backend.onrender.com/student/submit/${code}`,sendResponse,{
+    const response= await axios.post(`http://localhost:3000/student/submit/${code}`,sendResponse,{
         headers:{
           Authorization:`Bearer ${token}`
         }

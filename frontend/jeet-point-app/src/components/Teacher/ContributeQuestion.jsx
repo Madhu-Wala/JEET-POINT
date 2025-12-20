@@ -33,7 +33,7 @@ export default function ContributeQuestion() {
         if (!user) return;
         const token = await user.getIdToken();
 
-        const response = await axios.get("https://jeet-point-backend.onrender.com/teacher/contributed", {
+        const response = await axios.get("http://localhost:3000/teacher/contributed", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -100,7 +100,7 @@ export default function ContributeQuestion() {
         imgUrl: formData.imgUrl,
       };
 
-      const response = await axios.post("https://jeet-point-backend.onrender.com/teacher/contribute", payload, {
+      const response = await axios.post("http://localhost:3000/teacher/contribute", payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

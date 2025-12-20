@@ -34,7 +34,7 @@ export default function QuizAttempt() {
         const token = await user.getIdToken();
 
         const response = await axios.get(
-          `https://jeet-point-backend.onrender.com/student/quizAttempt?subject=${encodeURIComponent(
+          `http://localhost:3000/student/quizAttempt?subject=${encodeURIComponent(
             subject
           )}&chapters=${encodeURIComponent(chaptersParam)}&count=${count}`,
           { headers: { Authorization: `Bearer ${token}` } }
@@ -71,7 +71,7 @@ export default function QuizAttempt() {
       const token = await user.getIdToken();
 
       await axios.post(
-        `https://jeet-point-backend.onrender.com/student/submitQuiz`,
+        `http://localhost:3000/student/submitQuiz`,
         { quizId, answers, sc },
         { headers: { Authorization: `Bearer ${token}` } }
       );
