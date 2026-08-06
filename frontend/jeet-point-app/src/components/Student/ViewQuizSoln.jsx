@@ -4,6 +4,8 @@ import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { InlineMath } from "react-katex";
 import "katex/dist/katex.min.css";
+import API_URL from "../../config/api";
+
 
 export default function ViewQuizSoln() {
   const { _id } = useParams();
@@ -15,7 +17,7 @@ export default function ViewQuizSoln() {
         const user = getAuth().currentUser;
         const token = await user.getIdToken();
         const res = await axios.get(
-          `http://localhost:3000/student/view-quiz-solution/${_id}`,
+          `${API_URL}/student/view-quiz-solution/${_id}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setQuiz(res.data);

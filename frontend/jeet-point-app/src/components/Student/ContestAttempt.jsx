@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
+import API_URL from "../../config/api";
 
 function ContestQstnBox({ qstnText, imgUrl, options, onSelect }) {
   
@@ -80,7 +81,7 @@ function ContestAttempt() {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
         
-        const response=await axios.get(`http://localhost:3000/student/contest/${code}`,{
+        const response=await axios.get(`${API_URL}/student/contest/${code}`,{
         headers:{
           Authorization:`Bearer ${token}`
         },
@@ -129,7 +130,7 @@ function ContestAttempt() {
         score:sc,total:total,answers:answers
       }
 
-    const response= await axios.post(`http://localhost:3000/student/submit/${code}`,sendResponse,{
+    const response= await axios.post(`${API_URL}/student/submit/${code}`,sendResponse,{
         headers:{
           Authorization:`Bearer ${token}`
         }

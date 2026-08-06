@@ -12,6 +12,8 @@ import {
 } from "recharts";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
+import API_URL from "../../config/api";
+
 
 function StatBox({ title, value, icon }) {
   return (
@@ -46,13 +48,13 @@ export default function TeacherDashboard() {
         const token = await user.getIdToken();
 
         const [contestsResp, dashResp, contribResp] = await Promise.all([
-          axios.get("http://localhost:3000/teacher/contests", {
+          axios.get(`${API_URL}/teacher/contests`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:3000/teacher/dashContest", {
+          axios.get(`${API_URL}/teacher/dashContest`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
-          axios.get("http://localhost:3000/teacher/contributed", {
+          axios.get(`${API_URL}/teacher/contributed`, {
             headers: { Authorization: `Bearer ${token}` },
           }),
         ]);

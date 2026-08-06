@@ -1,33 +1,33 @@
 const express = require('express');
 const router = express.Router();
 const studentController = require('../controllers/studentController');
-const { verifyToken } = require('../middleware/firebaseAuth');
+const { verifyToken,verifyRole } = require('../middleware/firebaseAuth');
 
 // student: fetch contest by code
-router.get('/contest/:code', verifyToken, studentController.getContestForStudent);
+router.get('/contest/:code', verifyToken,verifyRole("Student"), studentController.getContestForStudent);
 
 // student: submit contest response
-router.post('/submit/:code', verifyToken, studentController.submitContest);
+router.post('/submit/:code', verifyToken,verifyRole("Student"), studentController.submitContest);
 
 // student: attempted contests list
-router.get('/attempted-contests', verifyToken, studentController.getAttemptedContests);
+router.get('/attempted-contests', verifyToken,verifyRole("Student"), studentController.getAttemptedContests);
 
 // student: view solution for contest
-router.get('/view-solution/:code', verifyToken, studentController.viewContestSolution);
+router.get('/view-solution/:code', verifyToken,verifyRole("Student"), studentController.viewContestSolution);
 
 // teacher's route 'view-solution' and student 'view-solution' are same endpoint in original file.
 // Keeping student route name consistent with provided structure.
 
 // student: generate quiz attempt
-router.get('/quizAttempt', verifyToken, studentController.getQuizAttempt);
+router.get('/quizAttempt', verifyToken,verifyRole("Student"), studentController.getQuizAttempt);
 
 // student: submit quiz
-router.post('/submitQuiz', verifyToken, studentController.submitQuiz);
+router.post('/submitQuiz', verifyToken,verifyRole("Student"), studentController.submitQuiz);
 
 // student: quiz history
-router.get('/quizHistory', verifyToken, studentController.quizHistory);
+router.get('/quizHistory', verifyToken,verifyRole("Student"), studentController.quizHistory);
 
 // student: view quiz solution
-router.get('/view-quiz-solution/:quizId', verifyToken, studentController.viewQuizSolution);
+router.get('/view-quiz-solution/:quizId', verifyToken,verifyRole("Student"), studentController.viewQuizSolution);
 
 module.exports = router;

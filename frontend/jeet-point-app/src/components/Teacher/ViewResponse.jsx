@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import axios from "axios";
+import API_URL from "../../config/api";
+
 
 export default function ViewResponse() {
   const { code } = useParams(); // contest code
@@ -18,7 +20,7 @@ export default function ViewResponse() {
         const user = getAuth().currentUser;
         const token = await user.getIdToken();
 
-        const res = await axios.get(`http://localhost:3000/teacher/view-responses/${code}`, {
+        const res = await axios.get(`${API_URL}/teacher/view-responses/${code}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

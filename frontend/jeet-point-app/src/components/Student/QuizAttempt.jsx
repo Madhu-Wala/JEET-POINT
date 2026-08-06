@@ -4,6 +4,7 @@ import { getAuth } from "firebase/auth";
 import { useLocation, useNavigate } from "react-router-dom";
 import "katex/dist/katex.min.css";
 import { InlineMath } from "react-katex";
+import API_URL from "../../config/api";
 
 export default function QuizAttempt() {
   const [questions, setQuestions] = useState([]);
@@ -34,7 +35,7 @@ export default function QuizAttempt() {
         const token = await user.getIdToken();
 
         const response = await axios.get(
-          `http://localhost:3000/student/quizAttempt?subject=${encodeURIComponent(
+          `${API_URL}/student/quizAttempt?subject=${encodeURIComponent(
             subject
           )}&chapters=${encodeURIComponent(chaptersParam)}&count=${count}`,
           { headers: { Authorization: `Bearer ${token}` } }
@@ -71,7 +72,7 @@ export default function QuizAttempt() {
       const token = await user.getIdToken();
 
       await axios.post(
-        `http://localhost:3000/student/submitQuiz`,
+        `${API_URL}/student/submitQuiz`,
         { quizId, answers, sc },
         { headers: { Authorization: `Bearer ${token}` } }
       );

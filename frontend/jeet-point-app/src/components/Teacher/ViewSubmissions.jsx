@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import axios from "axios";
+import API_URL from "../../config/api";
+
 
 export default function ViewSubmissions(){
    const [answers, setAnswers] = useState({});
@@ -17,7 +19,7 @@ export default function ViewSubmissions(){
         const user=getAuth().currentUser;
       const token=await user.getIdToken();
 
-      const response=await axios.get(`http://localhost:3000/teacher/view-response/${code}/${studentId}`,{
+      const response=await axios.get(`${API_URL}/teacher/view-response/${code}/${studentId}`,{
         headers:{
           Authorization:`Bearer ${token}`
         }

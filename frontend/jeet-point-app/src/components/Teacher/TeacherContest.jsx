@@ -2,6 +2,8 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
+import API_URL from "../../config/api";
+
 
 export default function TeacherContest() {
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ export default function TeacherContest() {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
   
-        const response=await axios.get("http://localhost:3000/teacher/contests",{
+        const response=await axios.get(`${API_URL}/teacher/contests`,{
           headers:{
             Authorization:`Bearer ${token}`,
           }

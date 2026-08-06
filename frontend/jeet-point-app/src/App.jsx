@@ -24,6 +24,10 @@ import ViewResponse from './components/Teacher/ViewResponse';
 import ViewSubmissions from './components/Teacher/ViewSubmissions';
 import ViewQuizSoln from './components/Student/ViewQuizSoln';
 
+import Unauthorized from './Unauthorized';
+import StudentRoute from './StudentRoutes';
+import TeacherRoute from './TeacherRoutes';
+
 function App() {
     const { loading } = useContext(AuthContext);
     if (loading) return null;
@@ -36,7 +40,12 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/forgot" element={<ForgotPassword />} />
                     <Route path="/signup" element={<Signup />} />
-                    <Route path="/StudentDASH" element={<StudentLayout />}>
+                    <Route path="/unauthorized" element={<Unauthorized />} />
+                    <Route path="/StudentDASH" element={
+                        <StudentRoute>
+                            <StudentLayout />
+                        </StudentRoute>
+                    }>
                         <Route index element={<StudentQuiz />} />
                         <Route path="contests" element={<StudentContest />} />
                         <Route path="analytics" element={<StudentAnalytics />} />
@@ -45,7 +54,11 @@ function App() {
                         <Route path="view-quiz-solution/:_id" element={<ViewQuizSoln/>}/>
                         <Route path="contest-attempt/:code" element={<ContestAttempt />} />
                     </Route>
-                    <Route path="/TeacherDASH" element={<TeacherLayout />}>
+                    <Route path="/TeacherDASH" element={
+                        <TeacherRoute>
+                            <TeacherLayout />
+                        </TeacherRoute>
+                    }>
                         <Route index element={<TeacherDashboard />} />
                         <Route path="contests" element={<TeacherContest />} />
                         <Route path="generate" element={<GenerateContest />} />

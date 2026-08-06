@@ -15,6 +15,7 @@ import {
 } from "recharts";
 import CalendarHeatmap from "react-calendar-heatmap";
 import "react-calendar-heatmap/dist/styles.css";
+import API_URL from "../../config/api";
 
 export default function StudentAnalytics() {
   const { user } = useContext(AuthContext);
@@ -28,7 +29,7 @@ export default function StudentAnalytics() {
         const user = getAuth().currentUser;
         const token = await user.getIdToken();
         const response = await axios.get(
-          "http://localhost:3000/student/quizHistory",
+          `${API_URL}/student/quizHistory`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
@@ -49,7 +50,7 @@ export default function StudentAnalytics() {
         const token = await user.getIdToken();
 
         const response = await axios.get(
-          "http://localhost:3000/student/attempted-contests",
+          `${API_URL}/student/attempted-contests`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

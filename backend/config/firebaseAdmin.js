@@ -17,7 +17,11 @@ function initializeFirebase() {
   console.log('Initialized Firebase Admin');
 }
 
+function getFirestore() {
+  return admin.firestore();
+}
 module.exports = {
   initializeFirebase,
+  getFirestore,
   admin,
 };

@@ -3,6 +3,8 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import axios from "axios";
+import API_URL from "../../config/api";
+
 
 export default function ContestLeaderboard() {
   const { code } = useParams();
@@ -20,7 +22,7 @@ export default function ContestLeaderboard() {
 
         // Fetch submissions
         const response = await axios.get(
-          `http://localhost:3000/teacher/leaderboard/${code}`,
+          `${API_URL}/teacher/leaderboard/${code}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }

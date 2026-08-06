@@ -5,6 +5,8 @@ import GenerateQuizModal from "./GenerateQuizModal";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
+import API_URL from "../../config/api";
+
 
   
 function SubBox({ icon, subjectname, no_ofQuizzes, accuracy, color }) {
@@ -43,7 +45,7 @@ export default function StudentQuiz() {
       try {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
-        const response=await axios.get("http://localhost:3000/student/quizHistory", {headers: {Authorization: `Bearer ${token}`}});
+        const response=await axios.get(`${API_URL}/student/quizHistory`, {headers: {Authorization: `Bearer ${token}`}});
         setHistory(response.data);
       } catch (err) {
         console.error("Error fetching quiz history:", err);

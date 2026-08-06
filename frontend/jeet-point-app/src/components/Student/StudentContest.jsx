@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { getAuth } from "firebase/auth";
 import axios from "axios";
+import API_URL from "../../config/api";
+
 
 function StatBox({ title, value, icon }) {
   return (
@@ -29,7 +31,7 @@ export default function StudentContest() {
         const user=getAuth().currentUser;
         const token=await user.getIdToken();
   
-        const response=await axios.get("http://localhost:3000/student/attempted-contests",{
+        const response=await axios.get(`${API_URL}/student/attempted-contests`,{
           headers:{
             Authorization:`Bearer ${token}`,
           }

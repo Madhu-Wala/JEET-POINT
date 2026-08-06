@@ -183,7 +183,7 @@ function Login() {
       <button
         type="button"
         onClick={handleGoogleSignin}
-        className="flex items-center justify-center w-full gap-2 mt-4 px-5 py-2.5 bg-white-600 hover:bg-gray-200 border border-1 text-black font-medium rounded-md"
+        className="flex items-center justify-center w-full gap-2 mt-4 px-5 py-2.5 bg-white-600 hover:bg-gray-200 border-1 text-black font-medium rounded-md"
       >
         <img
           src="https://developers.google.com/identity/images/g-logo.png"

@@ -2,6 +2,7 @@ import { useState, useRef } from "react";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../../config/api";
 
 
 export default function GenerateContest() {
@@ -111,7 +112,7 @@ export default function GenerateContest() {
       };
 
       const response = await axios.post(
-        "http://localhost:3000/teacher/create-contest",
+        `${API_URL}/teacher/create-contest`,
         payload,
         {
           headers: {

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { getAuth } from "firebase/auth";
+import API_URL from "../../config/api";
+
 
 const subjects = ["Physics", "Chemistry", "Biology", "Mathematics"];
 const chapters = {
@@ -33,7 +35,7 @@ export default function ContributeQuestion() {
         if (!user) return;
         const token = await user.getIdToken();
 
-        const response = await axios.get("http://localhost:3000/teacher/contributed", {
+        const response = await axios.get(`${API_URL}/teacher/contributed`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -100,7 +102,7 @@ export default function ContributeQuestion() {
         imgUrl: formData.imgUrl,
       };
 
-      const response = await axios.post("http://localhost:3000/teacher/contribute", payload, {
+      const response = await axios.post(`${API_URL}/teacher/contribute`, payload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
