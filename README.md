@@ -1,6 +1,8 @@
 # JEET-Point — Quiz & Contest Platform
 
-JEET-Point is a full‑stack web application for running quizzes and contests. Students can take adaptive quizzes; teachers can create/manage contests and questions; admins can manage users and system settings. The frontend is built with React + Vite and the backend is Node.js + Express with MongoDB and Firebase-based auth.
+[![Live Demo](https://img.shields.io/badge/Live-Demo-blue)](https://jeet-point.web.app/)
+
+JEET-Point is a full‑stack web application for running quizzes and contests. Students can take adaptive quizzes; teachers can create/manage contests and questions. The frontend is built with React + Vite and the backend is Node.js + Express with MongoDB and Firebase-based auth.
 
 ## Key Features
 
@@ -69,6 +71,7 @@ Prerequisites:
    ```
    - Create `.env` (example below).
    - Firebase service account is provided via environment variable (no JSON file committed).
+   - Cloudinary Credentials to be added to make the application functional, steps to get it are provided later.
 
 3. Frontend setup
    ```sh
@@ -125,6 +128,58 @@ If you want to attach your own Firebase project:
 
 2. Copy the service account JSON and add it as a **single-line value** in `backend/.env`.  
    Make sure to **remove all spaces and line breaks** before saving.
+
+## Cloudinary — add your own credentials
+
+1. Create a Cloudinary account: https://cloudinary.com/.
+2. From the Cloudinary Dashboard copy:
+   - Cloud name
+   - API Key
+   - API Secret
+3. Add them to backend/.env (do NOT commit the file):
+   ```
+   CLOUDINARY_CLOUD_NAME=your_cloud_name
+   CLOUDINARY_API_KEY=your_api_key
+   CLOUDINARY_API_SECRET=your_api_secret
+   ```
+4. Restart the backend server so the new env vars are loaded.
+
+## EmailJS — add your own EmailJS credentials (replace project creds)
+
+This project currently uses the project's EmailJS account. To use your own:
+
+1. Sign in at https://www.emailjs.com/ and create an Email Service (Gmail/SMTP/etc).
+2. Create an Email Template.
+3. From the EmailJS dashboard copy, in this order:
+   1. Service ID
+   2. Template ID
+   3. Public Key (User ID)
+4. Replace the existing credentials on line 14 of:
+   frontend/jeet-point-app/src/components/Contact.jsx
+   — replace values in sequence: Service ID, Template ID, Public Key.
+5. (Recommended) Instead of hard‑coding, create and add these to a frontend env file:
+   frontend/jeet-point-app/.env.local
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+6. Restart the frontend dev server (npm run dev).
+
+Example: modify Contact.jsx to use env vars (see next snippet).
+
+replace:
+```
+let data={name, email, msg};
+
+emailjs.send("service_tuycojb", "template_n8o15uq", data, "7pyJRXFQ8-18SA-Ip")
+```
+with:
+```
+// load your EmailJS creds (replace hard-coded values on line 14 in sequence: Service ID, Template ID, Public Key)
+   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+   emailjs.send(SERVICE_ID, TEMPLATE_ID, data, PUBLIC_KEY)
+```
 
 ## Usage
 
